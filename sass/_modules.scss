@@ -1,0 +1,275 @@
+// //CRAZY OVERLAY SHIT
+  // $image-gradient-color-top: teal;
+  // $transparency-top: 1;
+  // $image-gradient-color-bottom: black;
+  // $transparency-bottom: 1;
+  // $vertical-angle: 180deg;
+
+  // $image-gradient-color-left: purple;
+  // $transparency-left: 1;
+  // $image-gradient-color-right: red;
+  // $transparency-right: 1;
+  // $horizontal-angle: 90deg;
+
+  // .overlay {
+  //     @include linear-gradient($vertical-angle, transparentize($image-gradient-color-top, $transparency-top),
+  //     transparentize($image-gradient-color-bottom, $transparency-bottom));
+  //     display: block;
+  //     @include position(absolute, 0px 0px 0px 0px);
+
+  //     &:after {
+  //       content: '';
+  //       @include linear-gradient($horizontal-angle, transparentize($image-gradient-color-left, $transparency-left),
+  //         transparentize($image-gradient-color-right, $transparency-right));
+  //       display: block;
+  //       @include position(absolute, 0px 0px 0px 0px);
+  //   }
+
+
+///@TODO - reorganize scss files to have this cascade correctly
+$mobile: new-breakpoint(max-width 565px 4);
+$tablet: new-breakpoint(max-width 800px 8);
+$desktop: new-breakpoint(min-width 801px 12);
+
+
+@mixin section-bg ($path-to-image, $bg-color, $bg-trans) {
+  @include background-image(url($path-to-image));
+  background-color: transparentize($bg-color, $bg-trans);
+  background-repeat: no-repeat;
+  background-size: contain;
+  padding-top: 3em;
+  padding-bottom: 3em;
+}
+
+
+@mixin right-wrapper{
+  $default-layout-direction: RTL;
+  .right-content-wrapper{
+    padding-top: .25rem;
+    @include span-columns(6);
+    @include omega();
+    @include media($tablet) {
+      @include span-columns(4);
+      @include omega();
+      h1{
+        @include type(2);
+      }
+    }
+  @include media($tablet) {
+    padding-bottom: 2em;
+  }
+    @include media($mobile) {
+    @include span-columns(4);
+    @include pad();
+    padding-bottom: 2em;
+    }
+  }
+  $default-layout-direction: LTR;
+}
+
+@mixin float-right-wrapper{
+  $default-layout-direction: RTL;
+  .right-content-wrapper{
+    padding-top: .25rem;
+    @include span-columns(6);
+    @include omega();
+    @include media($tablet) {
+      @include span-columns(8);
+      @include omega();
+      h1{
+        @include type(2);
+      }
+    }
+  @include media($tablet) {
+    padding-bottom: 2em;
+  }
+    @include media($mobile) {
+    @include span-columns(4);
+    @include pad();
+    padding-bottom: 2em;
+    }
+  }
+  $default-layout-direction: LTR;
+}
+
+@mixin left-wrapper{
+    .left-content-wrapper{
+      padding-top: .25rem;
+      @include span-columns(6);
+      @include media($tablet) {
+        @include span-columns(8);
+          h1{
+          @include type(2);
+          }
+      }
+      @include media($mobile) {
+        @include span-columns(4);
+      }
+    }
+}
+
+
+/////////NAVIGATION
+
+nav a:before{
+  font-family: 'icomoon';
+}
+
+.hi-icon-wrap {
+  opacity: .8;
+  display: inline-block;
+  text-align: center;
+  padding: 1em .25em;
+}
+
+.hi-icon-wrap2 {
+  opacity: .8;
+  display: inline-block;
+  text-align: center;
+  padding: 1em .25em;
+}
+
+.hi-icon {
+  display: inline-block;
+  font-size: 0px;
+  cursor: pointer;
+  margin: 15px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: transparentize(white, .7);
+  text-align: center;
+  position: relative;
+  z-index: 1000;
+  color: lighten($light-black, 5%);
+}
+
+.hi-icon:after {
+  pointer-events: none;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  content: '';
+  -webkit-box-sizing: content-box;
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+}
+
+.hi-icon:before {
+  font-family: 'icomoon';
+  speak: none;
+  font-size: 36px;
+  line-height: 50px;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  display: block;
+  -webkit-font-smoothing: antialiased;
+}
+
+.hi-icon-effect-5 .hi-icon {
+  box-shadow: 0 0 0 2px rgba(255,255,255,.1);
+  overflow: hidden;
+  -webkit-transition: background 0.3s, color 0.3s, box-shadow 0.3s;
+  -moz-transition: background 0.3s, color 0.3s, box-shadow 0.3s;
+  transition: background 0.3s, color 0.3s, box-shadow 0.3s;
+}
+
+.hi-icon-effect-5 .hi-icon:after {
+  display: none;
+}
+
+.hi-icon-effect-5 .hi-icon:hover {
+  background: rgba(255,255,255,1);
+  color: $light-black;
+  box-shadow: 0 0 0 3px rgba(255,255,255,0.2);
+  transition: .25s;
+}
+
+.hi-icon-effect-5c .hi-icon:hover:before {
+  -webkit-animation: toTopFromBottom 0.3s forwards;
+  -moz-animation: toTopFromBottom 0.3s forwards;
+  animation: toTopFromBottom 0.3s forwards;
+}
+
+@-webkit-keyframes toTopFromBottom {
+  49% {
+    -webkit-transform: translateY(-100%);
+  }
+  50% {
+    opacity: 0;
+    -webkit-transform: translateY(100%);
+  }
+  51% {
+    opacity: 1;
+  }
+}
+@-moz-keyframes toTopFromBottom {
+  49% {
+    -moz-transform: translateY(-100%);
+  }
+  50% {
+    opacity: 0;
+    -moz-transform: translateY(100%);
+  }
+  51% {
+    opacity: 1;
+  }
+}
+@keyframes toTopFromBottom {
+  49% {
+    transform: translateY(-100%);
+  }
+  50% {
+    opacity: 0;
+    transform: translateY(100%);
+  }
+  51% {
+    opacity: 1;
+  }
+}
+
+
+.hi-icon-effect-5d .hi-icon:hover:before {
+  -webkit-animation: toBottomFromTop 0.3s forwards;
+  -moz-animation: toBottomFromTop 0.3s forwards;
+  animation: toBottomFromTop 0.3s forwards;
+}
+
+@-webkit-keyframes toBottomFromTop {
+  49% {
+    -webkit-transform: translateY(100%);
+  }
+  50% {
+    opacity: 0;
+    -webkit-transform: translateY(-100%);
+  }
+  51% {
+    opacity: 1;
+  }
+}
+@-moz-keyframes toBottomFromTop {
+  49% {
+    -moz-transform: translateY(100%);
+  }
+  50% {
+    opacity: 0;
+    -moz-transform: translateY(-100%);
+  }
+  51% {
+    opacity: 1;
+  }
+}
+@keyframes toBottomFromTop {
+  49% {
+    transform: translateY(100%);
+  }
+  50% {
+    opacity: 0;
+    transform: translateY(-100%);
+  }
+  51% {
+    opacity: 1;
+  }
+}
