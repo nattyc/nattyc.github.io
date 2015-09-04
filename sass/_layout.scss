@@ -58,7 +58,7 @@ img, video, object{
 
 
 img, video, .video-container{
-  box-shadow: 0 3px 10px rgba(0,0,0,.3);
+  box-shadow: 0 2px 6px rgba(0,0,0,.3);
   margin: .7em 0;
   height: auto;
 }
@@ -165,6 +165,7 @@ img.lazy{
 
 .description{
   padding-bottom: 1em;
+  padding-right: 2em;
 }
 
 
@@ -336,6 +337,40 @@ img.lazy{
 }
 
 //////////////////////////////////////////
+//SPRIG
+//////////////////////////////////////////
+
+.sprig{
+  @include section-bg("../img/sprig-bg.png",#E5E5E5,0);
+  z-index: 999;
+  
+  .sprig-top{
+    float:right;
+  }
+
+  
+
+  @include float-right-wrapper;
+  .right-content-wrapper{
+    padding-bottom: 2em;
+     @include media($tablet) {
+      padding-bottom: 2em;
+    }
+
+  }
+
+  h1,p,.project-info{
+    color: black;
+  }
+
+  span{
+    color: black;
+    border-color: black;
+  }
+
+}
+
+//////////////////////////////////////////
 //XANGO
 //////////////////////////////////////////
 
@@ -381,8 +416,8 @@ img.lazy{
 
 .blacksmith{
   @include section-bg("../img/china-bg.png",$light-black,0);
-  @include left-wrapper;
-  .left-content-wrapper{
+  @include right-wrapper;
+  .right-content-wrapper{
     padding-top: .6em;
     padding-bottom: 2rem;
     h1, h2, p{
@@ -413,7 +448,7 @@ img.lazy{
 .spur{
   @include section-bg("../img/spur-bg.png",#499797,0);
   z-index: 999;
-  @include float-right-wrapper;
+  @include left-wrapper;
   p, h1, span, .project-info{
     color:#fff;
   }
